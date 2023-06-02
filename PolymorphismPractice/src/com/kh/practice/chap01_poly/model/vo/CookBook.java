@@ -1,0 +1,14 @@
+package com.kh.practice.chap01_poly.model.vo;
+
+public class CookBook extends Book{
+	private boolean coupon;
+	
+	public CookBook() {}
+	public CookBook(String title, String author, String publisher, boolean coupon) {
+		super();
+		this.coupon=coupon;
+	}
+	public String toString() {
+		return null;
+		}
+}
