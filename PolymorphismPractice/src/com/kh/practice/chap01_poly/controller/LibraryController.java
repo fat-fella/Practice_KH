@@ -13,6 +13,11 @@ public class LibraryController {
 	public Member myInfo() {
 		return null;
 		}
-	
-
+	public Book[] searchBook(String keyword) {
+		return null;
+		
+	}
+	public int rentBook(int index) {
+		return 0;
+	}
 }
