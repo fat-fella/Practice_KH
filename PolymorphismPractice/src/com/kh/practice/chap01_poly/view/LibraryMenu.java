@@ -10,11 +10,11 @@ public class LibraryMenu {
 	private Scanner sc = new Scanner(System.in);
 	
 	public void mainMenu() {
-		System.out.println("이름 : ");
+		System.out.print("이름 : ");
 		String name = sc.nextLine();
-		System.out.println("나이 : ");
+		System.out.print("나이 : ");
 		int age = sc.nextInt();
-		System.out.println("성별 : ");
+		System.out.print("성별 : ");
 		char gender = sc.next().charAt(0);
 		System.out.println("===메뉴===");
 		System.out.println("1. 마이페이지");
@@ -23,9 +23,35 @@ public class LibraryMenu {
 		System.out.println("4. 도서 대여하기");
 		System.out.println("9. 프로그램 종료하기");
 		System.out.println("메뉴 번호 : ");
-		
+		int menuNum = sc.nextInt(); sc.nextLine();
+		boolean run = true;
+		while(run) {			
+			switch(menuNum) {
+			case 1 : 
+				run = false;
+				break;
+			case 2 : selectAll();
+			run = false;
+			break;
+			case 3 : searchBook();
+			run = false;
+			break;
+			case 4 : rentBook();
+			run = false;
+			break;
+			case 9 : System.exit(0);
+			run = false;
+			break;
+			default : System.out.println("다시입력");
+			mainMenu();
+			break;
+			}
+		}
 	}
-	public void selectAll() {}
+	public void selectAll() {
+		LibraryController lc = new LibraryController();
+		lc.selectAll();
+	}
 	public void searchBook() {}
 	public void rentBook() {}
 	

@@ -7,12 +7,16 @@ public class LibraryController {
 	private Member mem = null;
 	private Book[] bList = new Book[5];
 	
+	
 	public void insertMember(Member mem) {
 		
 	}
 	public Member myInfo() {
-		return null;
+		return mem;
 		}
+	public Book[] selectAll() {
+		return bList;
+	}
 	public Book[] searchBook(String keyword) {
 		return null;
 		
