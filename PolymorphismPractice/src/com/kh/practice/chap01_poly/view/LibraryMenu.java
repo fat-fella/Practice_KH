@@ -8,7 +8,7 @@ import com.kh.practice.chap01_poly.model.vo.Member;
 public class LibraryMenu {
 	private LibraryController lc = new LibraryController();
 	private Scanner sc = new Scanner(System.in);
-	
+
 	public void mainMenu() {
 		System.out.print("이름 : ");
 		String name = sc.nextLine();
@@ -53,6 +53,8 @@ public class LibraryMenu {
 		lc.selectAll();
 	}
 	public void searchBook() {}
+		LibraryController lc1 = new LibraryController();
+		
 	public void rentBook() {}
 	
 }
