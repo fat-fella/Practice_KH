@@ -12,22 +12,36 @@ public class MusicController {
 	
 	
 	public int addList(Music music) {
-		int result = 0; //      0: 추가실패, 1: 추가 성공;
-		//TODO
+		int result = 0; //  0: 추가실패, 1: 추가 성공;
+		if (list.add(music)) {
+			result = 1;  
+		}
 		return result;
 	}
 	public int addAtZero(Music music) {
-		int result = 0;
-		//TODO
-		return result;
+		int result = 0;  // 0: 추가실패, 1: 추가 성공;
+		int cnt = list.size();
+		((ArrayList<Music>)list).add(0, music); 
+		int cntAfter = list.size();
+		if (cnt < cntAfter) {
+			result = cntAfter-cnt;
+		}
+			return result;
+		
 	}
 	public List<Music> printAll() {
-		//TODO
 		return list;
 	}
+	
 	public Music searchMusic(String title) {
-		//TODO
 		Music result = null;
+		for (Music vo : list) {
+			if(vo.getTitle().equals(title)) {
+				result = vo;
+				break;
+			}
+		}
+		
 		return result;
 	}
 	public Music removeMusic(String title) {
@@ -51,3 +65,25 @@ public class MusicController {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

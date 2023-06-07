@@ -100,13 +100,13 @@ public class MusicView {
 	}
 	public void searchMusic() {
 		System.out.println("==특정 곡 검색==");
-		System.out.println("검색할 곡명 : ");
+		System.out.print("검색할 곡명 : ");
 		String title = sc.nextLine();
 		Music result = mc.searchMusic(title);
 		if(result == null) {
 			System.out.println("검색 결과 없음");
 		} else {
-			System.out.printf("검색한 곡은 000(%s, %s) 입니다.\n", result.getTitle(), result.getSinger());
+			System.out.printf("검색한 곡은 (%s, %s) 입니다.\n", result.getTitle(), result.getSinger());
 		}
 		System.out.println("결과");
 		
@@ -116,6 +116,16 @@ public class MusicView {
 	}
 	public void removeMusic() {
 		System.out.println("==특정 곡 삭제==");
+		System.out.print("삭제할 곡명 : ");
+		String title = sc.nextLine();
+		Music result = mc.removeMusic(title);
+		if(result == null) {
+			System.out.println("검색 결과 없음");
+		} else {
+			System.out.printf("검색한 곡은 (%s, %s) 입니다.\n", result.getTitle(), result.getSinger());
+		
+		System.out.printf("%s - %s 을(를) 삭제했습니다.", result.getTitle(), result.getSinger());
+		}
 		//TODO
 		
 	}
@@ -143,3 +153,4 @@ public class MusicView {
 	
 	
 }
+
