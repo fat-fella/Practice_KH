@@ -131,8 +131,11 @@ public class MusicView {
 	}
 	public void setMusic() {
 		System.out.println("==특정 곡 정보 수정==");
-		//TODO
-		
+		System.out.print("곡 명 :");
+		String title = sc.nextLine();
+		System.out.print("가수 명 : ");
+		String singer = sc.nextLine();
+		mc.setMusic(title, null);
 	}
 	public void ascTitle() {
 		System.out.println("===곡 명 오름차순 정렬===");
