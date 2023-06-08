@@ -1,8 +1,11 @@
 package com.kh.practice.list.music.model.vo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Music {
+public class Music implements Comparable<Object>, Serializable{
+	private static final long serialVersionUID = 3446753800283017526L;
+	
 	private String title;
 	private String singer;
 	
@@ -36,9 +39,10 @@ public class Music {
 
 	
 	public int compareTo(Object o) {
-		int result = 0;
-		//TODO
-		return result;
+		int result = this.singer.compareTo(((Music)o).getSinger());
+		System.out.println("compare To 정렬확인 : " + result + "-" + ((Music)o).getSinger());
+		return result*-1;
+		
 	}
 	
 	
@@ -59,7 +63,9 @@ public class Music {
 	public void setSinger(String singer) {
 		this.singer = singer;
 	}
-	
+	public void saveFile() {
+		
+	}
 	
 	
 	

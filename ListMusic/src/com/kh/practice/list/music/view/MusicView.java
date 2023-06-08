@@ -1,5 +1,6 @@
 package com.kh.practice.list.music.view;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class MusicView {
 	private MusicController mc = new MusicController();
 	
 	public void mainMenu() {
-		int menu =0;
+		int menu =-1;
 		do {
 			System.out.println("**메인메뉴**");
 			System.out.println("1. 마지막 위치에 곡 추가");
@@ -23,15 +24,17 @@ public class MusicView {
 			System.out.println("7. 곡명 오름차순 정렬");
 			System.out.println("8. 가수명 내림차순 정렬");
 			System.out.println("9. 종료");
+			System.out.println("0. 파일에 저장");
 			System.out.print("메뉴번호 선택 : ");
 			String menuNum = sc.nextLine();
-			menu = 0;
+			menu = -1;
 			try {
 				menu = Integer.parseInt(menuNum);
 			} catch (NumberFormatException e) {
 				System.out.println("숫자로 다시입력");
 			}
 			switch (menu) {
+			//case 0: saveFile(); break;
 			case 1: addList(); break;
 			case 2: addAtZero(); break;
 			case 3: printAll(); break;
@@ -132,18 +135,29 @@ public class MusicView {
 	public void setMusic() {
 		System.out.println("==특정 곡 정보 수정==");
 		//TODO
-		
+		int result = 0;
 	}
 	public void ascTitle() {
 		System.out.println("===곡 명 오름차순 정렬===");
-		//TODO
-		
+		int result = mc.ascTitle();
+		if(result>0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
 	}
 	public void descSinger() {
-		//TODO
-		
+		System.out.println("===가수명 내림차순 정렬===");
+		int result = mc.descSinger();
+		if(result>0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
 	}
-	
+	public void saveFile() {
+		//TODO
+	}
 	
 	
 	
