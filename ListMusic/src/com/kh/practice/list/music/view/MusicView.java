@@ -34,7 +34,7 @@ public class MusicView {
 				System.out.println("숫자로 다시입력");
 			}
 			switch (menu) {
-			//case 0: saveFile(); break;
+			case 0: saveFile(); break;
 			case 1: addList(); break;
 			case 2: addAtZero(); break;
 			case 3: printAll(); break;
@@ -156,7 +156,20 @@ public class MusicView {
 		}
 	}
 	public void saveFile() {
-		//TODO
+		System.out.println("==파일저장==");
+		System.out.println("저장할 파일 경로를 작성해주세요");
+		String fileName = sc.nextLine();
+		
+		int result = mc.saveFile(fileName);
+		if(result >0) {
+			System.out.println("저장성공");
+		} else {
+			System.out.println("저장실패");
+		} 
+			
+		
+		
+		
 	}
 	
 	

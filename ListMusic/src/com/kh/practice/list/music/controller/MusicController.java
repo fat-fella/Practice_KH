@@ -1,9 +1,12 @@
 package com.kh.practice.list.music.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,13 +18,48 @@ public class MusicController {
 	private List<Music> list = new ArrayList<Music>();
 
 	public MusicController() {
-		list.add(new Music("aa", "aaa"));
-		list.add(new Music("bb", "bbb"));
-		list.add(new Music("cc", "ccc"));
-		list.add(new Music("dd", "ddd"));
-		list.add(new Music("ee", "aaa"));
-		list.add(new Music("ff", "bbb"));
-		list.add(new Music("gg", "ccc"));
+		String filePath = "music.txt";
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		BufferedInputStream bis = null;
+		int result = 0;
+		try {
+			fis = new FileInputStream(filePath);
+			ois = new ObjectInputStream(fis);
+			bis = new BufferedInputStream(ois);
+			try {
+				list = (List<Music>) ois.readObject();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (bis != null)
+					bis.close();
+				if (ois != null)
+					ois.close();
+				if (fis != null)
+					fis.close();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+//		list.add(new Music("aa", "aaa"));
+//		list.add(new Music("bb", "bbb"));
+//		list.add(new Music("cc", "ccc"));
+//		list.add(new Music("dd", "ddd"));
+//		list.add(new Music("ee", "aaa"));
+//		list.add(new Music("ff", "bbb"));
+//		list.add(new Music("gg", "ccc"));
 	}
 
 	public int addList(Music music) {
@@ -97,6 +135,10 @@ public class MusicController {
 			fos = new FileOutputStream(filePath);
 			oos = new ObjectOutputStream(fos);
 			bos = new BufferedOutputStream(oos);
+
+			oos.writeObject(list);
+			oos.flush();
+			result = 1;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,12 +154,11 @@ public class MusicController {
 				if (fos != null)
 					fos.close();
 
-			return result;
+				return result;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			}
-		return result;
 		}
+		return result;
 	}
-	
+}
